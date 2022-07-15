@@ -21,8 +21,10 @@ func Welcome(c *fiber.Ctx) error {
 
 // GetAllCustomer /**
 func GetAllCustomer(c *fiber.Ctx) error {
+	var message domain.Messages
+
 	if len(customers) <= 0 {
-		return c.Status(http.StatusNotFound).JSON("No customer found.")
+		return c.Status(http.StatusNotFound).JSON(message.NoCostumerFound)
 	}
 	return c.Status(http.StatusOK).JSON(customers)
 }
